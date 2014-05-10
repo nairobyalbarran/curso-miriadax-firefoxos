@@ -1,0 +1,21 @@
+{
+  "version": "1.0",
+  "name": "GeoMaps",
+  "package_path": "https://googledrive.com/host/0B8G692PpoxzoQVB1d2Q5bHh3dnc/packed/package.zip",
+  "icons": {
+    "16":  "/ico_16.png",
+    "48":  "/ico_48.png",
+    "128": "/ico_128.png"
+  },
+  "developer": {
+    "name": "Raul Miono"
+  },
+"permissions": {
+	    "geolocation": {
+	      "description": "Utilizado para centrar el mapa en la posición actual"
+      	},
+      	"storage": {
+			"description": "Guardar la ruta generada."
+		}
+  	}
+}

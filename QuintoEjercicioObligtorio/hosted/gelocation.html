@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Centrales Nucleares</title>
+        <script type="text/javascript" src="zepto.min.js"></script>
+        <script type="text/javascript" src="touch.js"></script>
+        <script type="text/javascript"></script>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=true"></script>
+        <script type="text/javascript" src="gmaps.js"></script>
+        <meta name="viewport" content="width=device-width initial-scale=1.0"> 
+        <link rel="stylesheet" type="text/css" href="css/mypath.css" />
+
+        <script>
+            var map, lat = 40.4167754, lng = -3.7037901999999576; //inializo variables 
+            var ruta = []; //ruta es el array donde se guardan todos los marcadores
+
+
+            //Guarda la posición actual y la añade a la siguiente ruta como un vector de posiciones
+            function guardarRuta(lat, lng) {
+                ruta.push([lat, lng]);
+                localStorage.ruta = JSON.stringify(ruta);
+            }
+
+            function enlazarMarcador(e) {
+                // muestra ruta entre marcas anteriores y actuales
+                map.drawRoute({
+                    origin: [lat, lng], // origen en coordenadas anteriores
+                    // destino en coordenadas del click o toque actual
+                    destination: [e.latLng.lat(), e.latLng.lng()],
+                    travelMode: 'driving',
+                    strokeColor: '#000000',
+                    strokeOpacity: 0.6,
+                    strokeWeight: 5
+                });
+                lat = e.latLng.lat(); // guarda coords para marca siguiente
+                lng = e.latLng.lng();
+
+                map.addMarker({
+                    lat: lat,
+                    lng: lng}); // pone marcador en mapa
+                guardarRuta(lat, lng);//guarda nueva posición de la ruta
+            }
+            ;
+
+
+            function geolocalizar() {
+//Solo muestra el marcador en la pisición actual si no se carga una ruta existente, ya que al recargar 
+//la aplicación la idea es que se retome la ruta anterior o comience una nueva ruta a partir 
+//de la posición
+
+                if (ruta.length > 0)
+                    return;
+
+                GMaps.geolocate({
+                    success: function(position) {
+                        lat = position.coords.latitude;  // guarda coords en lat y lng
+                        lng = position.coords.longitude;
+
+                        // Mueve el mapa hacia la posición indicada                 
+                        map.setCenter(lat, lng);
+
+                        // añade marcador en la posicion indicada[lat, lng]
+                        map.addMarker({
+                            lat: lat,
+                            lng: lng
+                        });
+                        // Añade el primer punto de la ruta.
+                        guardarRuta(lat, lng);
+
+                    },
+                    error: function(error) {
+                        alert('Geolocalización falla: ' + error.message);
+                    },
+                    not_supported: function() {
+                        alert("Su navegador no soporta geolocalización");
+                    }
+                });
+            }
+            ;
+
+
+
+            function loadRuta() {
+                // Verifica si hay una ruta guardada para marcarla en el mapa al recargar la página
+                var rutaAnterior,
+                        e = {latLng: null};
+
+                localStorage.ruta = localStorage.ruta || "[]";
+                rutaAnterior = JSON.parse(localStorage.ruta);
+                if (rutaAnterior.length > 1) { // Repintar la ruta guardada, solo si tiene mÃ¡s de un punto de recorrido
+                    // Guardar posiciÃ³n inicial de la ruta
+                    lat = rutaAnterior[0][0];
+                    lng = rutaAnterior[0][1];
+                    map.setCenter(lat, lng);
+                    map.addMarker({lat: lat, lng: lng});
+                    // AÃ±adir el primer punto de la ruta
+                    guardarRuta(lat, lng);
+                    for (var i = 1; i < rutaAnterior.length; i++) {
+                        // Crear un objeto con los datos de la posiciÃ³n de la ruta, como si 
+                        // se hubiera hecho click en el mapa
+                        e.latLng = new google.maps.LatLng(rutaAnterior[i][0], rutaAnterior[i][1]);
+                        // Pintar ruta hasta la posiciÃ³n actual
+                        enlazarMarcador(e);
+                    }
+
+                }
+            }
+            function inicializarMapa() {//limpia la ruta y nos coloca en muestra nuestra posición actual
+                localStorage.ruta = "[]";
+                ruta = [];
+                map.cleanRoute();
+                map.removeMarkers();
+                geolocalizar();
+
+            }
+            ;
+
+
+            $(function() {
+
+                $('#inicializar').on('click', inicializarMapa);
+                map = new GMaps({// muestra mapa centrado en coords [lat, lng]
+                    el: '#map',
+                    lat: lat,
+                    lng: lng,
+                    click: enlazarMarcador,
+                    tap: enlazarMarcador
+
+                });
+                loadRuta();
+                geolocalizar();
+            });
+        </script>
+    </head>
+    <body>
+        <div>
+            <h2 id="titulo">Geolocalización</h2>
+            <button class="botonclass" type="button" id="inicializar"><span>Inicializar</span></button>
+        </div>
+        <div id="map"></div>
+
+    </body>
+</html>
+

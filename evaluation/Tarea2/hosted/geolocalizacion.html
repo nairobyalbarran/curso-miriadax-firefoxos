@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>GMaps.js &mdash; Geolocation</title>
+	<script type="text/javascript" src="zepto.min.js"></script>
+	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+	<script type="text/javascript" src="gmaps.js"></script>
+	<link rel="stylesheet" type="text/css" href="mypath.css" />
+	<script type="text/javascript">
+		var map, lat, lng;
+		var marcadores = (marcadores || []); //marcadores es el array donde se guardan todos los puntos donde se haga click
+
+		$(function(){
+			function reiniciar(){  //borro marcadores y localStorage y cargo de nuevo el mapa     
+			marcadores.length = 0;
+			localStorage.marcadores = "";
+			geolocalizar();       
+		}
+       
+		function cargarMarcadores(){ 
+			if (localStorage.marcadores){  //si no hay marcadores guardados, no se ejecuta
+				marcadores = JSON.parse(localStorage.marcadores);
+         
+				for (var i=0; i<marcadores.length; i++){  //bucle que pinta las rutas para cada marcador guardado.		 
+					lat1 = marcadores [i][0];
+					lng1 = marcadores [i][1];
+					
+					// muestra ruta entre marcas guardados
+					map.drawRoute({
+						origin: [lat, lng],  // origen en coordenadas anteriores
+						// destino en coordenadas de cada marcador guardado
+						destination: [lat1, lng1],
+						travelMode: 'driving',
+						strokeColor: '#000000',
+						strokeOpacity: 0.6,
+						strokeWeight: 5
+					});
+           
+				lat = marcadores[i][0]; // guarda coords para marca siguiente
+				lng = marcadores[i][1];
+				
+				map.addMarker({ lat: lat, lng: lng});  // pone marcador en mapa
+				}
+			}
+		}
+
+		function enlazarMarcador(e){
+			// muestra ruta entre marcas anteriores y actuales
+			map.drawRoute({
+				origin: [lat, lng],  // origen en coordenadas anteriores
+				// destino en coordenadas del click o toque actual
+				destination: [e.latLng.lat(), e.latLng.lng()],
+				travelMode: 'driving',
+				strokeColor: '#000000',
+				strokeOpacity: 0.6,
+				strokeWeight: 5
+			});
+
+			lat = e.latLng.lat();   // guarda coords para marca siguiente
+			lng = e.latLng.lng();
+
+			map.addMarker({ lat: lat, lng: lng});  // pone marcador en mapa
+       
+			marcadores.push([lat,lng]);
+			localStorage.marcadores = JSON.stringify(marcadores); // guardo cada click hecho en el mapa
+		};
+
+		function geolocalizar(){
+			GMaps.geolocate({
+				success: function(position){
+					lat = position.coords.latitude;  // guarda coords en lat y lng
+					lng = position.coords.longitude;
+
+					map = new GMaps({  // muestra mapa centrado en coords [lat, lng]
+						el: '#map',
+						lat: lat,
+						lng: lng,
+						click: enlazarMarcador,
+						tap: enlazarMarcador
+					});
+					map.addMarker({ lat: lat, lng: lng});  // marcador en [lat, lng]
+            
+					cargarMarcadores(); //Carga los marcadores guardados, si los hubiera
+				},
+				error: function(error) { alert('Geolocalización falla: '+error.message); },
+				not_supported: function(){ alert("Su navegador no soporta geolocalización"); },
+			});
+		};
+
+		geolocalizar();
+		$("#reset").on("click", reiniciar); //manejador del botón Limpiar
+      
+	});
+</script>
+</head>
+<body>
+    <header>
+    <h1>Geolocalización </h1>	
+    </header>
+    <article>
+    <div id="map"></div>
+    </article>
+	<footer><button id="reset">Reiniciar</button></footer>
+</body>
+</html>

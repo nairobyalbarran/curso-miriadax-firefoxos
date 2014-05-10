@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Mod3_tarea_3.4.1</title>
+        <meta name="author" content="Nairoby Albarran">
+        <meta name="viewport" content="width=device-width; initial-scale=1.0">
+        <style type="text/css">
+            @font-face{
+                font-family: 'FiraSans';
+                src: url('FiraSansOT-Light.otf');
+            }
+
+            body {
+                font-family: 'FiraSans';
+            }
+            body {
+                background: #F4F4F4;
+                color: #666;
+            }
+            #sidebar {
+                z-index: 2;
+                width: 136px;
+                position: fixed;
+                left: 15px;
+                top: 15px;
+            }
+            header{
+                color: #666;
+                height: 47px;
+            }
+            header, nav{
+                width: 150px;
+                background-color: #4D4D4D;
+            }
+            #sidebar>header,  #sidebar>nav{
+                background-color: #313131;
+                box-shadow: 0 0 7px 0 rgba(50,50,50,.45);
+                border-radius: 2px 2px 0 0;
+            }
+            #sidebar>header>h1>span{
+                display: inline-block;
+                padding: 12px 8px;
+                text-overflow: ellipsis;
+                max-width: 112px;
+            }
+            h1 {
+                font-size: 1.1em;
+                font-weight: 100;
+                color: white;
+                padding-left: 10px;
+            }
+            #sidebar>nav ul>li>a>i {
+                margin-right: 5px;
+                vertical-align: middle;
+            }
+            #sidebar>nav {
+                padding-bottom: 8px;
+                border-top: 1px solid #282828;
+                border-radius: 0 0 2px 2px;
+                font-size: 13px;
+                font-weight: 800;
+            }
+            #sidebar>nav ul>li>a {
+                display: block;
+                height: 25px;
+                padding: 0 10px;
+                border-top: 1px solid #3c3c3c;
+                border-bottom: 1px solid #282828;
+                line-height: 25px;
+            }
+            #sidebar>nav ul {
+                list-style: none;
+                border-bottom: 1px solid #3C3C3C;
+                color: #757575;
+                width: 150px;
+                background-color: #313131;
+            }
+            ul{
+                display:block;
+                margin: 0;
+                padding: 0;
+                border: 0;
+                font-size: 100%;
+                font: inherit;
+                vertical-align: baseline;
+            }
+            a{
+                font-family: Arial, Helvetica, sans-serif;
+                color: #858585;
+                text-decoration: none;
+                font-size: 0.9em;
+                display: block;
+                padding: 6px;
+                border-bottom-width: 1px;
+                border-bottom-style: solid;
+                border-bottom-color: #4D4D4D;
+                background-color: #313131;
+            }
+            a:hover{
+                color:#FFF;
+                background-color: #1C2224;
+                border-right-width: 5px;
+                border-right-style: solid;
+                border-right-color: #008dde;
+            }
+
+            .Welcome{
+                display: inline-block;
+                width: 16px;
+                height: 18px;
+                background-image: url("img/fire.png");
+            }
+            .Featured{
+                display: inline-block;
+                width: 16px;
+                height: 16px;
+                background-image: url("img/feature.png");
+            }
+            .People{
+                display: inline-block;
+                width: 16px;
+                height: 16px;
+                background-image: url("img/people.png");
+            }
+            .Music{
+                display: inline-block;
+                width: 16px;
+                height: 16px;
+                background-image: url("img/music.png");
+            }
+            .Mixes{
+                display: inline-block;
+                width: 16px;
+                height: 16px;
+                background-image: url("img/mixes.png");
+            }
+            .Video{
+                display: inline-block;
+                width: 16px;
+                height: 16px;
+                background-image: url("img/video.png");
+            }
+            .Radio{
+                display: inline-block;
+                width: 16px;
+                height: 16px;
+                background-image: url("img/radio.png");
+            }
+            .Welcome:hover, a:hover .Welcome, .selected .Welcome{
+                background-image: url("img/firewhite.png");
+            }
+            .Featured:hover, a:hover .Featured, .selected .Featured{
+                background-image: url("img/featurewhite.png");
+            } 
+            .People:hover, a:hover .People, .selected .People{
+                background-image: url("img/peoplewhite.png");
+            } 
+            .Music:hover, a:hover .Music, .selected .Music{
+                background-image: url("img/musicwhite.png");
+            } 
+            .Mixes:hover, a:hover .Mixes, .selected .Mixes{
+                background-image: url("img/mixeswhite.png");
+            } 
+            .Video:hover, a:hover .Video, .selected .Video{
+                background-image: url("img/videowhite.png");
+            } 
+            .Radio:hover, a:hover .Radio, .selected .Radio{
+                background-image: url("img/radiowhite.png");
+            } 
+        </style>
+    </head>
+    <body>
+        <section id="sidebar">
+            <header>
+                <h1><span>Discover</span></h1>
+            </header>
+            <nav data-tour-id="sidebarnav">
+                <ul>
+                    <li><a href="#">
+                            <i class="Welcome"></i>
+                            <span>Welcome</span>
+                        </a>
+                    </li>
+                    <li><a href="#"> 
+                            <i class="Featured"></i>
+                            <span>Featured</span>
+                        </a>
+                    </li>
+                    <li><a href="#">
+                            <i class="People"></i>
+                            <span>People</span>
+                        </a>
+                    </li>
+                    <li><a href="#">
+                            <i class="Music"></i>
+                            <span>Music</span>
+                        </a>
+                    </li>
+                    <li><a href="#">
+                            <i class="Mixes"></i>
+                            <span>Mixes</span>
+                        </a>
+                    </li>
+                    <li><a href="#">
+                            <i class="Video"></i>
+                            <span>Videos</span>
+                        </a>
+                    </li>
+                    <li><a href="#">
+                            <i class="Radio"></i>
+                            <span>Radio</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </section>
+    </body>
+</html>

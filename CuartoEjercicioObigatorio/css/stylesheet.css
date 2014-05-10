@@ -1,0 +1,41 @@
+@font-face {
+    font-family: 'FiraSans';
+    src: url('FiraSansOT-Light.otf');
+}
+button { width: 120px;
+         height:30px;
+}
+
+html, body{
+    margin:0px;
+    padding: 6px;
+    height:95%;
+    font-family: 'FiraSans';
+}
+h2{
+    margin-left: 20px;
+    font-family: 'FiraSans';
+    font-weight: bold;
+    font-size:30px;
+}
+h3{
+    margin-left: 40px;
+    font-family: 'FiraSans';
+    font-weight: bold;
+    font-size:30px;
+}
+
+span{
+    font-weight: bold;
+}
+#cambiar, #inicializar{
+    font-family: 'FiraSans';
+    font-weight: bold;
+}
+#crono{
+    font-size: 35px;
+}
+.boton{
+    margin-bottom: 5px;
+}
+

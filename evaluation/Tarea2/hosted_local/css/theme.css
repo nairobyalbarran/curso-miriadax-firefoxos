@@ -1,0 +1,88 @@
+/* Fondo y colores */
+section[role="region"] > .content {
+    padding: 0px 3rem 1.5rem;
+    background-color: #2C393B;
+    text-align: center;
+}
+
+section[role="region"] > header:first-child {
+    background: #5F5F5F;
+    background: -moz-linear-gradient(top,  #5F5F5F 0%, #333333 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#5F5F5F), color-stop(100%,#333333));
+    background: -webkit-linear-gradient(top,  #5F5F5F 0%,#333333 100%);
+    background: -o-linear-gradient(top,  #5F5F5F 0%,#333333 100%);
+    background: -ms-linear-gradient(top,  #5F5F5F 0%,#333333 100%);
+    background: linear-gradient(to bottom,  #5F5F5F 0%,#333333 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5F5F5F', endColorstr='#333333',GradientType=0 );
+}
+
+section[role="region"] > header:first-child > button .icon,
+section[role="region"] > header:first-child > a .icon {
+    margin-left: -10px !important;
+}
+
+section[role="region"] > header:first-child > a:not([aria-disabled="true"]):active:after,
+section[role="region"] > header:first-child > button:not(:disabled):active:after,
+section[role="region"] > header:first-child > a:not([aria-disabled="true"]):hover:after,
+section[role="region"] > header:first-child > button:not(:disabled):hover:after,
+section[role="region"] > header:first-child menu[type="toolbar"] a:not([aria-disabled="true"]):hover,
+section[role="region"] > header:first-child menu[type="toolbar"] button:not(:disabled):hover,
+section[role="region"] > header:first-child menu[type="toolbar"] a:not([aria-disabled="true"]):active,
+section[role="region"] > header:first-child menu[type="toolbar"] button:not(:disabled):active  {
+    background-color: #333 !important;
+}
+
+section[role="region"] > header:first-child > h1:last-of-type {
+    background: url(images/separator.png) no-repeat 2rem center / auto 2.8rem;
+    margin-left: -0.1rem;
+    z-index: 1;
+}
+
+[data-type="list"] header {
+    border-bottom: 0.1rem solid #F4F4F4;
+    color: #F4F4F4;
+}
+
+[data-type="list"] li {
+    height: 5rem;
+}
+
+[data-type="list"] li p:first-of-type {
+    color: #F4F4F4;
+    text-align: center;
+}
+
+/* dejo borde en blanco con sombreado negro alrededor del mapa */
+.frame {
+    background: #fff;
+    margin: 10px 5px 53px 5px;
+    box-shadow: 0 0 5px #000;
+    border-radius: 2px;
+    position: absolute; /* posición absoluta a navegador */
+    top: 0;
+    left: 0;        /* ajusta a borde de navegador */
+    right: 0;
+    bottom: 0;
+}
+
+#map{
+    margin: 3px;
+    padding: 0;
+    height: 98%;
+    background: rgba(0,255,0,0.5); /* verde si no hay mapa */
+}
+
+#inicializar{
+    bottom: 0;
+    position: absolute;
+    left: 0;
+    right: 0;
+}
+
+.infoWindow{
+    font-size: 10px!important;
+    white-space: nowrap;
+}
+#template_marcador{
+    display: none;
+}

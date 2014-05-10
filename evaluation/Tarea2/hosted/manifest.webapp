@@ -1,0 +1,23 @@
+{
+  "version": "1.0",
+  "name": "GeoMaps",
+  "description": "Geolocalizacion con Google Maps",
+  "launch_path": "/host/0B3LZDJv7bkWdVkUxYWEtaTdmMWM/hosted/geoMaps.html",
+  "icons": {
+    "16":  "/host/0B3LZDJv7bkWdVkUxYWEtaTdmMWM/hosted/ico_16.png",
+    "48":  "/host/0B3LZDJv7bkWdVkUxYWEtaTdmMWM/hosted/ico_48.png",
+    "128": "/host/0B3LZDJv7bkWdVkUxYWEtaTdmMWM/hosted/ico_128.png"
+  },
+  "developer": {
+    "name": "Raul Miono"
+  },
+"permissions": {
+	    "geolocation": {
+	      "description": "Utilizado para centrar el mapa en la posición actual"
+      	},
+      	"storage": {
+			"description": "Guardar la ruta generada."
+		}
+  	}
+}
+

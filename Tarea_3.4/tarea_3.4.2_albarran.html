@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Mod3_tarea_3.4.2</title>
+        <meta name="author" content="Nairoby Albarran">
+        <meta name="viewport" content="width=device-width; initial-scale=1.0">
+        <style type="text/css">
+
+            @font-face{
+                font-family: 'FiraSans';
+                src: url('FiraSansOT-Light.otf');
+            }
+
+
+            #sidebar{
+                border-top-style:solid;
+                border-top-width: 1px;
+                border-top-color: #CCC;
+                height: 40px;
+                border-bottom-style:solid;
+                border-bottom-width: 1px;
+                border-bottom-color: #CCC;
+                padding: 0px;
+            }
+
+
+            #logo{
+                display: inline-block;
+                width: 100px;
+                float:left;
+                height: 40px;
+                margin-left: 200px;
+            }
+
+            #espacio{
+                display: inline-block;
+                width:150px;
+                height:40px;
+                float:left;
+                border-left-style:solid;
+                border-left-width: 1px;
+                border-left-color: #CCC;
+                border-bottom-style:solid;
+                border-bottom-width: 1px;
+                border-bottom-color: #CCC;
+                border-right-style: solid;
+                border-right-width: 1px;
+                border-right-color: #CCC;
+                vertical-align: middle;
+            }
+            span {
+                color: #333;
+                vertical-align: middle;
+                display: block;
+                font-weight: bold;
+                font-family: Arial;
+                letter-spacing: 0;
+                font-size: 0.9em;
+
+            }
+
+            #foto{
+                vertical-align: middle;
+                padding: 8px;
+            }
+            #sidebar>nav ul>li>a {
+                display: block;
+
+                padding: 0 10px;
+
+            }
+
+            ul{
+                display:block;
+                list-style-type: none;               
+                margin: 0;
+                padding: 0px;
+                font-size: 100%;
+
+            }
+            ul li a {
+                color: #ccc;
+                text-decoration: none;
+                display: block;
+                padding: 10px 10px 10px 20px;
+            }
+            a{
+                display: block;
+                text-decoration: none;
+                padding: 0 10px;
+                float: left;
+                border-right-width:1px;
+                border-right-style:solid;
+                border-right-color:#CCC;
+                background-color: transparent;
+                line-height: 40px;
+
+            }  
+            a:hover{
+                background-color: transparent;
+                border-bottom-width: 5px;
+                border-bottom-style: solid;
+                border-bottom-color: #008dde;
+            }
+
+            .Sport:hover, a:hover{
+                background-color: transparent;
+                border-bottom-width: 5px;
+                border-bottom-style: solid;
+                border-bottom-color: #008dde;
+            } 
+            .Weather:hover, a:hover .Weather, .selected .Weather{
+                background-color: transparent;
+                border-bottom-width: 5px;
+                border-bottom-style: solid;
+                border-bottom-color: #008dde;
+            } 
+            .Capital:hover, a:hover .Capital, .selected .Capital{
+                background-color: transparent;
+                border-bottom-width: 5px;
+                border-bottom-style: solid;
+                border-bottom-color: #008dde;
+            } 
+
+            form{
+                border-radius: 1px 1px 1px 1px;
+
+            }
+
+            button{display: inline-block;
+            }
+            #blq-search-btn {
+                bottom: 6px;
+                margin: 0;
+                padding: 4px;
+                border: 0;
+                background-color: #e4e4e4;
+                border-color: #e4e4e4;
+                border-left: 0;
+
+            }
+            #search{
+                vertical-align: middle;
+                padding: 6px;
+
+            }
+            #blq-search-q{
+                font-family: Arial;
+                background-color: #e4e4e4;
+                border-color: #e4e4e4;
+                font-weight: bold;
+                border-left: 8px solid #fff;
+                border-top: 0;
+                border-bottom: 0;
+                height: 1.8em;
+                display: inline-block;
+
+            }
+            input-placeholder {
+                color: #333;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div id="sidebar">
+            <div id="logo">
+                <img id="foto" src="img/bbc.png"/>
+            </div>
+            <div id="espacio">                
+            </div> 
+            <nav data-tour-id="sidebarnav">
+                <ul>
+                    <li><a href="#">
+                            <i class="News"></i>
+                            <span>News</span>
+                        </a>
+                    </li>
+                    <li><a href="#"> 
+                            <i class="Sport"></i>
+                            <span>Sport</span>
+                        </a>
+                    </li>
+                    <li><a href="#">
+                            <i class="Weather"></i>
+                            <span>Weather</span>
+                        </a>
+                    </li>
+                    <li><a href="#">
+                            <i class="Capital"></i>
+                            <span>Capital</span>
+                        </a>
+                    </li>
+                    <li><a href="#">
+                            <i class="Culture"></i>
+                            <span>Culture</span>
+                        </a>
+                    </li>
+                    <li><a href="#">
+                            <i class="Shop"></i>
+                            <span>Shop</span>
+                        </a>
+                    </li>
+                    <li><a href="#">
+                            <i class="TV"></i>
+                            <span>TV</span>
+                        </a>
+                    </li>
+                    <li><a href="#">
+                            <i class="Radio"></i>
+                            <span>Radio</span>
+                        </a>
+                    </li>
+                    <li><a href="#">
+                            <i class="More"></i>
+                            <span>More...</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div id="search">
+                <form method="get" action="" role="search"> 
+                    <div> 
+                        <input type="hidden" name="go" value="toolbar"> 
+                        <input type="hidden" name="uri" value="/">
+                        <input id="blq-search-q" type="text" name="q" value maxlength="120" placeholder="Search" autocomplete="off">
+                        <button id="blq-search-btn" type="submit">
+                            <span>
+                                <img src="img/search.png" width="14" height="14" alt="Search">
+                            </span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+    </body>
+</html>

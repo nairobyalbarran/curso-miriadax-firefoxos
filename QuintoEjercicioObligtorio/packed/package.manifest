@@ -1,0 +1,26 @@
+{
+	"version": "0.1",
+	"name": "Road Map",
+	"description": "Generador de rutas",
+	"package_path": "https://googledrive.com/host/0B8G692PpoxzoWjFyM3lzUk1Bc0E/packed/package.zip",
+	
+        "icons": {
+		"60":  "/ico_60.png"
+	},
+
+	"developer": {
+		"name": "Nairoby Albarran Castro"
+		
+	},
+	"permissions": {
+	    "geolocation": {
+	      "description": "Utilizado para centrar el mapa en la posición actual"
+      	},
+      	"storage": {
+			"description": "Guardar la ruta generada."
+		}
+  	}
+}
+
+
+

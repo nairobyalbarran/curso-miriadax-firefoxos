@@ -1,0 +1,23 @@
+{
+	"version": "0.1",
+	"name": "Road Map",
+	"description": "Generador de rutas",
+	"launch_path": "/host/0B8G692PpoxzoWjFyM3lzUk1Bc0E/hosted/gelocation.html",
+	
+        "icons": {
+		"60":  "/host/0B8G692PpoxzoWjFyM3lzUk1Bc0E/hosted/img/ico_60.png"
+	},
+
+	"developer": {
+		"name": "Nairoby Albarran Castro"
+		
+	},
+	"permissions": {
+	    "geolocation": {
+	      "description": "Utilizado para centrar el mapa en la posición actual"
+      	},
+      	"storage": {
+			"description": "Guardar la ruta generada."
+		}
+  	}
+}

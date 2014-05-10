@@ -1,0 +1,30 @@
+p,ol {
+    font-size:18px;
+
+}
+h2.uno{
+    color:red;
+}
+h2.dos{
+    color:aqua;
+}
+
+h2.tres{
+    color:royalblue;
+}
+h2.cuatro{
+    color:#cc00cc;
+}
+h2.cinco{
+color:lawngreen;
+}
+
+span.azul{
+    color:blue;
+}
+span.rojo{
+    color: red;
+    
+}
+
+

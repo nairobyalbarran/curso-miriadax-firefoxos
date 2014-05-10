@@ -1,0 +1,67 @@
+@font-face{
+    font-family: 'FiraSans';
+    src: url('FiraSansOT-Light.otf');
+}
+
+body {
+    font-family: 'FiraSans';
+}
+#formato{
+    width:480px;
+    height:800px;
+    background: url('fondo.png');
+}
+header{
+    background-color: #cd6723;
+    overflow: hidden;
+    height:5rem;
+    font-size: 2.5rem;
+}
+#menu{
+    float:left;
+    height: 5rem;
+    width: 30px;
+    padding-top: 3%;
+    background-color: #bb482d;
+}
+#titulo{
+    float: left;
+    padding-top: 3%;
+}
+.color{
+    color: white;
+}
+nav {
+    width: 440px;
+}
+ul {
+    list-style-type: none;
+    margin-left: 1.5rem;
+    padding: 13px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-right-width: 1px;
+    border-left-width: 1px;
+    border-top-color: #CCC;
+    border-right-color: #CCC;
+    border-left-color: #CCC;
+    border-bottom-color: #CCC;
+}
+li{
+    line-height: 3rem;
+}
+a {
+    font-family: 'FiraSans';
+    color: white;
+    text-decoration: none;
+    font-size: 1.9rem;
+    display: block;
+    padding: 10px;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: #CCC;
+}
+a:hover {
+    color: #FFF;
+    background-color: #008eab;
+}

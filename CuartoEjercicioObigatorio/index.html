@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Cronómetro Cuarto Ejercicio Obligatorio</title>
+        <script type="text/javascript" src="zepto.min.js"></script>
+        <script type="text/javascript" src="touch.js"></script>
+        <script type="text/javascript"></script>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width; initial-scale=1.0"> 
+        <link type="text/css" rel="stylesheet" href="css/stylesheet.css"/>
+        
+        <script>
+            $(function() {
+                localStorage.c = (localStorage.c || "0.00");
+                var t, cl = $("#crono");
+                var touch = $("#body");
+                function incr() {
+                    localStorage.c = +localStorage.c + 0.01;
+                }
+                function mostrar() {
+                    cl.html((+localStorage.c).toFixed(2));
+                }
+                ;
+                function arrancar() {
+                    t = setInterval(function() {
+                        incr();
+                        mostrar();
+                    }, 100);
+                }
+                ;
+                function parar() {
+                    clearInterval(t);
+                    t = undefined;
+                }
+                ;
+                function cambiar() {
+                    if (!t)
+                        arrancar();
+                    else
+                        parar();
+                }
+                ;
+                function cambiarEstado() {
+                    cambiar();
+                    for (i = 0; i < (!t); i++) {
+                        var lista = (+localStorage.c).toFixed(2);
+                        $("#info").append("<p>Ha parado de contar en " + lista + " segundos</p>");
+                    }
+                }
+                ;
+                function inicializar() {
+                    if (!t) {
+                        localStorage.c = "0.00";
+                        mostrar();
+                        $("#info").html("");
+                    }
+                }
+                ;
+                function bloqueoBoton() {
+                    return false;
+                }
+                $('#cambiar').on('click', cambiarEstado);
+                $("#inicializar").on('click', inicializar);
+                $(".botonclass").on('tap', bloqueoBoton);
+                $(".botonclass").on('swipe', bloqueoBoton);
+                touch.on('tap', cambiarEstado);
+                touch.on('swipe', inicializar);
+
+            });
+        </script>
+    </head>
+    <body id="body">
+        <h3>Cronómetro</h3>
+        <h2><span id="crono">0.00</span> segundos </h2>
+        <button class="botonclass" type="button" id="cambiar"><span>Arrancar/Parar</span></button>
+        <button class="botonclass" type="button" id="inicializar"><span>Inicializar</span></button>
+        <div>
+            <p id="info"></p><br>
+        </div>
+    </body>
+</html>

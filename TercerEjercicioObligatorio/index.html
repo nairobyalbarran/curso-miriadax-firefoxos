@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <title>Javascript Tercer Ejercicio Obligatorio</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <style type="text/css">
+            h2{
+                text-align: center;
+            }
+            table
+            {
+                border-collapse:collapse;
+                width:100%;
+            }
+            table,th, td
+            {
+                border: 1px solid black;
+            }
+            th
+            {
+                height:50px;
+            }
+        </style>
+    </head>
+    <body >
+        <h2>Propiedades del objeto DOM location</h2>
+        <!--Tabla con propiedades de location-->
+        <table id="tabla">
+        </table>
+        <script>
+            var tabla = document.getElementById("tabla");
+            i = 0;
+            tabla.innerHTML += "<tr ><th class=\"formato\">Propiedad</th><th class=\"formato\">Valor</th></tr>";
+            for (i in location) //el bucle for examina el valor de cada propiedad location y genera una fila de la tabla 
+            {
+                if (typeof location[i] === "string")
+                {
+                    var valor = location[i]; //Guarda el valor de la propiedad location si es un string
+                } else {
+                    var valor = "No es imprimible"; //Si la propiedad es una function la variable valor muestra el string "No es imprimible"
+                }
+                //Se colocacada la variable valor en la tabla
+                tabla.innerHTML += "<tr><td class=\"formato\">" + i + "</td><td class=\"formato\"> " + valor + "</td ></tr>";
+            }
+        </script>
+    </body>
+</html>
